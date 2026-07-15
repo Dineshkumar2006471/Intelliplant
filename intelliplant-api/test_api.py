@@ -18,6 +18,7 @@ def test_health_check():
 
 from unittest.mock import patch, MagicMock
 
+
 @patch("main.supabase")
 def test_knowledge_graph_endpoint(mock_supabase):
     # Setup mock chained call
