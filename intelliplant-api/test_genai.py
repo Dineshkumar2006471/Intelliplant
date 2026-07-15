@@ -6,7 +6,6 @@ load_dotenv()
 
 client = genai.Client()
 response = client.models.generate_content(
-    model='gemini-1.5-flash',
-    contents='Tell me a joke.'
+    model="gemini-1.5-flash", contents="Tell me a joke."
 )
 print(response.text)

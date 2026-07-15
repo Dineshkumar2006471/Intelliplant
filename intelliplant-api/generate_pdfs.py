@@ -5,23 +5,25 @@ demo_dir = r"c:\Users\bingi\Intelliplant\demo-data"
 if not os.path.exists(demo_dir):
     os.makedirs(demo_dir)
 
+
 def create_pdf(filename, title, content):
     pdf = FPDF()
     pdf.add_page()
     pdf.set_font("Arial", size=12)
-    
+
     # Title
-    pdf.set_font("Arial", 'B', 16)
-    pdf.cell(200, 10, title, ln=1, align='C')
+    pdf.set_font("Arial", "B", 16)
+    pdf.cell(200, 10, title, ln=1, align="C")
     pdf.ln(10)
-    
+
     # Content
     pdf.set_font("Arial", size=12)
     pdf.multi_cell(0, 10, content)
-    
+
     filepath = os.path.join(demo_dir, filename)
     pdf.output(filepath)
     print(f"Generated {filepath}")
+
 
 # Text for Factory Act
 factory_act_text = """

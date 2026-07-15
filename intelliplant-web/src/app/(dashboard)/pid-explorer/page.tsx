@@ -2,9 +2,26 @@
 import Link from 'next/link';
 import { useState, useRef } from 'react';
 
+interface ExtractedNode {
+  tag: string;
+  name: string;
+  type: string;
+}
+
+interface ExtractedEdge {
+  source_tag: string;
+  target_tag: string;
+  relation: string;
+}
+
+interface PIDExtraction {
+  nodes: ExtractedNode[];
+  edges: ExtractedEdge[];
+}
+
 export default function PIDExplorerPage() {
   const [isExtracting, setIsExtracting] = useState(false);
-  const [extractedData, setExtractedData] = useState<any>(null);
+  const [extractedData, setExtractedData] = useState<PIDExtraction | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -26,8 +43,9 @@ export default function PIDExplorerPage() {
       } else {
         alert("Extraction failed: " + (data.message || data.detail || JSON.stringify(data)));
       }
-    } catch (err: any) {
-      alert("Error connecting to server: " + (err?.message || String(err)));
+    } catch (err) {
+      const errorMsg = err instanceof Error ? err.message : String(err);
+      alert("Error connecting to server: " + errorMsg);
     } finally {
       setIsExtracting(false);
       if (fileInputRef.current) fileInputRef.current.value = '';
@@ -69,7 +87,7 @@ export default function PIDExplorerPage() {
                 <div className="w-full text-sm">
                   <h3 className="font-bold mb-4 text-lg">Extracted Nodes:</h3>
                   <div className="grid grid-cols-3 gap-4 mb-8">
-                    {extractedData.nodes?.map((node: any, idx: number) => (
+                    {extractedData.nodes?.map((node: ExtractedNode, idx: number) => (
                       <div key={idx} className="p-4 border border-interactive-primary rounded-sm bg-blue-50">
                         <div className="font-bold text-interactive-primary text-base">{node.tag}</div>
                         <div className="mt-1 font-medium">{node.name}</div>
@@ -79,7 +97,7 @@ export default function PIDExplorerPage() {
                   </div>
                   <h3 className="font-bold mb-4 text-lg">Extracted Edges:</h3>
                   <div className="flex flex-col gap-2">
-                    {extractedData.edges?.map((edge: any, idx: number) => (
+                    {extractedData.edges?.map((edge: ExtractedEdge, idx: number) => (
                       <div key={idx} className="p-3 border border-border-subtle rounded-sm bg-background-secondary flex items-center gap-4">
                         <span className="font-bold text-interactive-primary">{edge.source_tag}</span>
                         <span className="text-text-secondary text-xs uppercase tracking-widest flex-1 text-center">--({edge.relation})--&gt;</span>

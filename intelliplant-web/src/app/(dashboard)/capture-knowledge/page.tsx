@@ -1,11 +1,17 @@
 "use client";
 import { useState } from 'react';
 
+interface ExtractedKnowledge {
+  equipment_tag?: string;
+  symptom?: string;
+  fix?: string;
+}
+
 export default function CaptureKnowledgePage() {
   const [expertName, setExpertName] = useState("Senior Engineer (John Doe)");
   const [transcript, setTranscript] = useState("Whenever we run C-104 past 80% load during winter, the outboard bearing temp spikes. The manual says it's normal up to 90C, but in my experience, if it hits 85C for more than an hour, the seal is going to warp.");
   const [isSaving, setIsSaving] = useState(false);
-  const [savedData, setSavedData] = useState<any>(null);
+  const [savedData, setSavedData] = useState<ExtractedKnowledge | null>(null);
 
   const handleSave = async () => {
     setIsSaving(true);
@@ -21,7 +27,7 @@ export default function CaptureKnowledgePage() {
       } else {
         alert("Failed: " + data.message);
       }
-    } catch (e) {
+    } catch {
       alert("Error saving knowledge");
     } finally {
       setIsSaving(false);

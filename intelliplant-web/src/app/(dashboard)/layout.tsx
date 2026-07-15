@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import UploadButton from '@/components/UploadButton';
 import Sidebar from '@/components/Sidebar';
 
