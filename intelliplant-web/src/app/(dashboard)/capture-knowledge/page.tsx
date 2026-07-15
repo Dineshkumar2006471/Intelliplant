@@ -16,7 +16,8 @@ export default function CaptureKnowledgePage() {
   const handleSave = async () => {
     setIsSaving(true);
     try {
-      const response = await fetch('http://localhost:8000/api/capture-knowledge', {
+      const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
+      const response = await fetch(`${API_BASE}/api/capture-knowledge`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ expert_name: expertName, knowledge_text: transcript })

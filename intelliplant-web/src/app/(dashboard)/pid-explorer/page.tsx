@@ -33,7 +33,8 @@ export default function PIDExplorerPage() {
     formData.append('file', file);
 
     try {
-      const response = await fetch('http://localhost:8000/api/parse-pid', {
+      const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
+      const response = await fetch(`${API_BASE}/api/parse-pid`, {
         method: 'POST',
         body: formData,
       });

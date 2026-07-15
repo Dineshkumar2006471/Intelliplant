@@ -26,7 +26,8 @@ export default function KnowledgeGraphPage() {
   useEffect(() => {
     const fetchGraphData = async () => {
       try {
-        const res = await fetch('http://localhost:8000/api/knowledge-graph');
+        const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
+        const res = await fetch(`${API_BASE}/api/knowledge-graph`);
         if (!res.ok) {
           throw new Error('Failed to fetch knowledge graph data');
         }
