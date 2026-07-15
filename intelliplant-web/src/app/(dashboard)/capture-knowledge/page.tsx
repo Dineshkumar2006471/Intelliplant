@@ -3,6 +3,7 @@ import { useState } from 'react';
 
 interface ExtractedKnowledge {
   equipment_tag?: string;
+  failure_mode?: string;
   symptom?: string;
   fix?: string;
 }

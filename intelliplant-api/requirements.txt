@@ -6,3 +6,4 @@ google-genai
 genkit
 python-multipart
 python-dotenv
+groq
