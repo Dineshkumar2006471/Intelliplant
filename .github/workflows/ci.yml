@@ -41,9 +41,13 @@ jobs:
         bandit -r . -lll
         
     - name: Run Pytest
+      env:
+        SUPABASE_URL: "https://example.supabase.co"
+        SUPABASE_KEY: "fake_key_for_testing"
+        GEMINI_API_KEY: "fake_gemini_key_for_testing"
       run: |
         cd intelliplant-api
-        pytest
+        pytest test_api.py
 
   frontend-checks:
     runs-on: ubuntu-latest
