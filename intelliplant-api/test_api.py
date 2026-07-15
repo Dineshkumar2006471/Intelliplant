@@ -16,7 +16,19 @@ def test_health_check():
     assert "database" in data
 
 
-def test_knowledge_graph_endpoint():
+from unittest.mock import patch, MagicMock
+
+@patch("main.supabase")
+def test_knowledge_graph_endpoint(mock_supabase):
+    # Setup mock chained call
+    mock_execute = MagicMock()
+    mock_execute.execute.return_value.data = []
+    mock_select = MagicMock()
+    mock_select.select.return_value = mock_execute
+    mock_table = MagicMock()
+    mock_table.table.return_value = mock_select
+    mock_supabase.table = mock_table.table
+
     response = client.get("/api/knowledge-graph")
     assert response.status_code == 200
     data = response.json()
