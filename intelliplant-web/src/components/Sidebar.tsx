@@ -45,7 +45,7 @@ export default function Sidebar() {
 
       {/* Footer Settings / Profile */}
       <div className="p-4 shrink-0">
-        <Link href="/settings" className="flex items-center gap-3 hover:bg-background-tertiary p-2 rounded-sm transition-colors cursor-pointer">
+        <div className="flex items-center gap-3 hover:bg-background-tertiary p-2 rounded-sm transition-colors cursor-pointer">
           <div className="w-8 h-8 rounded-full bg-interactive-primary text-white flex items-center justify-center font-semibold text-sm">
             BD
           </div>
@@ -53,7 +53,7 @@ export default function Sidebar() {
             <span className="text-sm font-medium text-text-primary">Bingi Dinesh</span>
             <span className="text-xs text-text-secondary">Admin Org</span>
           </div>
-        </Link>
+        </div>
       </div>
     </aside>
   );
