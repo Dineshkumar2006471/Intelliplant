@@ -1,10 +1,22 @@
 # IntelliPlant 🏭🧠
 
-IntelliPlant is an AI-powered industrial knowledge engine designed to unify scattered plant documentation, decode complex P&ID (Piping and Instrumentation Diagram) blueprints, and capture tribal expert knowledge before it retires. 
+### 🚀 Live Demo: [https://intelliplant.vercel.app/](https://intelliplant.vercel.app/)
 
-By leveraging cutting-edge Vision-Language Models (VLM), vector databases, and Graph RAG (Retrieval-Augmented Generation), IntelliPlant creates a "Unified Brain" for industrial facilities, allowing engineers to query plant health, troubleshoot equipment, and detect regulatory contradictions in seconds instead of hours.
+---
 
-![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)
+## 📸 Product Showcases
+
+### 1. Modern Industrial Intelligence Landing Page
+![Landing Page](snapshots/screenshot1.png)
+
+### 2. AI-Powered Compliance & Gaps Dashboard
+![Compliance & Gaps Dashboard](snapshots/screenshot2.png)
+
+### 3. Integrated Process & Data Workflows
+![Integrated Workflows](snapshots/screenshot3.png)
+
+### 4. Modular Industrial Capabilities
+![Modular Industrial Capabilities](snapshots/screenshot4.png)
 
 ---
 
